@@ -2,29 +2,28 @@
 using System.Collections;
 
 public class Cell : MonoBehaviour {
-	public Tile tile;
+	public Transform tile;
 	private Sprite _sprite;
 	private SpriteRenderer _sr;
 
 	// Use this for initialization
 	void Start () {
-	tile = gameObject.GetComponent<Tile> ();
+		tile = gameObject.transform.GetChild (0);
 		_sr = gameObject.GetComponent<SpriteRenderer> ();
-		SET_SPRITE ();
+		//SET_SPRITE ();
 
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		SET_SPRITE ();
+		//tile = gameObject.GetComponent<Tile> ();
+		//SET_SPRITE ();
 	
 	}
 
 	void SET_SPRITE(){
-		_sprite = tile.sprite;
-		_sr.sprite = _sprite;
+		
 	
 
 	}

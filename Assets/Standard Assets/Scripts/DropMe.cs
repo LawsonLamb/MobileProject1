@@ -32,7 +32,8 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
 	{
 		if (containerImage == null)
 			return;
-		
+
+
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null)
 			containerImage.color = highlightColor;
@@ -62,4 +63,7 @@ public class DropMe : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointe
 		
 		return srcImage.sprite;
 	}
+
+
+
 }

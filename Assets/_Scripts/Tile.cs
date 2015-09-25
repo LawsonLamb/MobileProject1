@@ -3,16 +3,28 @@ using System.Collections;
 
 //[RequireComponent(typeof(BoxCollider2D))]
 public class Tile:MonoBehaviour {
-	//private GridManager gridManager;
-	//public float scale;
-	public Sprite sprite;
+	
 
+	public int Column { get; set; }
+	public int Row { get; set; }
+	public string type{ get; set; }
 
 	void Awake ()
 	{
 		//sprite = gameObject.GetComponent<SpriteRenderer> ().sprite;
 		//scale = transform.localScale.x;
 		//gridManager = GetComponent<GridManager>();
+	}
+	void Update () {
+
+
+	}
+	public void Assign(int row, int column)
+	{
+
+		Column = column;
+		Row = row;
+	
 	}
 
 	public void Move (Vector2 destination)
@@ -32,14 +44,18 @@ public class Tile:MonoBehaviour {
 	}
 */
 	// Use this for initialization
-	void Start () {
-		//scale = transform.localScale.x;
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	
+	// Update is called once per frame
+
+	public static void SwapColumnRow(Tile a, Tile b)
+	{
+		int temp = a.Row;
+		a.Row = b.Row;
+		b.Row = temp;
+
+		temp = a.Column;
+		a.Column = b.Column;
+		b.Column = temp;
 	}
 
 }
