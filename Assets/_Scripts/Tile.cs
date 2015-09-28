@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using Random = UnityEngine.Random;
+using System;
 //[RequireComponent(typeof(BoxCollider2D))]
+
 public class Tile:MonoBehaviour {
 	
+	[SerializeField] private Color color;
 
-	public int Column { get; set; }
-	public int Row { get; set; }
+	private Vector3 screenPoint;
+	private Vector3 offset;
 	public string type{ get; set; }
 
 	void Awake ()
@@ -22,8 +25,8 @@ public class Tile:MonoBehaviour {
 	public void Assign(int row, int column)
 	{
 
-		Column = column;
-		Row = row;
+		//Column = column;
+		//Row = row;
 	
 	}
 
@@ -32,6 +35,7 @@ public class Tile:MonoBehaviour {
 		gameObject.transform.position = destination; // provisional
 
 	}
+
 	/*
 	void OnMouseEnter(){
 		scale = 1.5f;
@@ -42,11 +46,28 @@ public class Tile:MonoBehaviour {
 		scale = 1.0f;
 		transform.localScale = new Vector3 (scale, scale, transform.localScale.z);
 	}
-*/
+	
+	*/	
+
 	// Use this for initialization
 
-	// Update is called once per frame
+	void OnMouseDown() {
+		
+		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+	}
 
+
+	void OnMouseDrag()
+
+	{
+		
+		Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+		Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+		gameObject.transform.position = curPosition;
+
+	}
+	// Update is called once per frame
+	/*
 	public static void SwapColumnRow(Tile a, Tile b)
 	{
 		int temp = a.Row;
@@ -57,5 +78,11 @@ public class Tile:MonoBehaviour {
 		a.Column = b.Column;
 		b.Column = temp;
 	}
+	*/
+
+
+
+
+
 
 }
