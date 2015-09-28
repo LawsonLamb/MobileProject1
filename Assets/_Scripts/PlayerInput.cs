@@ -60,30 +60,6 @@ public class PlayerInput : MonoBehaviour {
 
 	}
 
-	void AttemptMove ()
-	{
-		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-		if (hit)
-		{	
-			if (NeighborCheck (hit.collider.gameObject))
-				{
-				//print (hit.collider.gameObject);
-				activeTile.GetComponent<Tile>().Move(hit.collider.gameObject.transform.position);
-				hit.collider.gameObject.GetComponent<Tile>().Move(activeTile.transform.position);
-					gridManager.CheckMatches();
-				}
-			}
-	}
 
-				bool NeighborCheck (GameObject objectToCheck)
-				{
-				int xDifference = (int)Mathf.Abs (activeTile.transform.position.x - objectToCheck.transform.position.x);
-				int yDifference = (int) Mathf.Abs (activeTile.transform.position.y - objectToCheck.transform.position.y);
-
-				if (xDifference + yDifference == 1)
-						return true;
-					else
-						return false;
-				}
 		
 }
