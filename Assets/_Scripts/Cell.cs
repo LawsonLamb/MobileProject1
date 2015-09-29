@@ -14,6 +14,7 @@ public enum Sprite_Type{
 }
 public class Cell : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExitHandler{
 	public int type;
+	public int Type{get{return type;} set{ type = value;}}
 	//public SpriteRenderer _sr;
 	public int Column;
 	public int Row;
@@ -23,6 +24,7 @@ public class Cell : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExit
 	public GridManager gridmanger;
 	private Color normalColor;
 	public Color highlightColor = Color.yellow;
+
 
 	public void OnEnable ()
 	{
@@ -51,7 +53,8 @@ public class Cell : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExit
 		Sprite dropSprite = GetDropSprite (data);
 		if (dropSprite != null){
 			Swap_Sprites(data,dropSprite);
-			Check_Vertical();
+			gridmanger.GetMatches(gameObject);
+
 		}
 		//receivingImage.overrideSprite = dropSprite;
 	}
@@ -94,9 +97,17 @@ public class Cell : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExit
 	private void Swap_Sprites(PointerEventData eventData,Sprite sprite){
 		var originalObj = eventData.pointerDrag;
 		var srcImage = originalObj.GetComponent<Image>();
+		var cell =  originalObj.GetComponent<Cell>();
+
 		//sets image to temp
 		//then assigns the sprite from dropped object image
 		//then we set the image of the droped sprite to the sprite that in the cell
+		/*
+		int tempTYPE = this.Type;
+		int tempType2 = (int)cell.Type;
+		this.Type = tempType2;
+		cell.Type = tempTYPE;
+		*/
 
 
 		Sprite temp = receivingImage.sprite;
@@ -150,5 +161,13 @@ public class Cell : MonoBehaviour,IDropHandler,IPointerEnterHandler,IPointerExit
 
 
 	}
+	public void  Remove_Tile(){
+
+		print ("add points");
+		int randomTile = Random.Range (0, gridmanger.sprites.Length);
+		receivingImage.sprite = gridmanger.sprites [randomTile];
+		type  = randomTile;
+	}
+
 }
 
