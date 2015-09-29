@@ -1,0 +1,15 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# Sprite sheet: iles.png (256 x 256)
+# $TexturePacker:SmartUpdate:f8bc8b9e2cc713730ffdb2f6ab96000c:5a735fe41b66561cb4ba44ddf1af17c9:15bf86175a9319b32c96860d93260f5a$
+#
+
+element_blue_diamond;2;190;64;64;0.5;0.5
+element_green_diamond;68;190;64;64;0.5;0.5
+element_purple_diamond;134;190;64;64;0.5;0.5
+element_red_diamond;2;124;64;64;0.5;0.5
+element_yellow_diamond;68;124;64;64;0.5;0.5
